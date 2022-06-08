@@ -1,0 +1,68 @@
+@import './Variables';
+
+@mixin FlexMixin($display, $direction, $jc, $ai, $Wrap: 'no-wrap') {
+    display: $display;
+    flex-direction: $direction;
+    justify-content: $jc;
+    align-items: $ai;
+    flex-wrap: $Wrap;
+}
+
+@mixin Texts($colors, $fs, $fw, $fm) {
+    color: $colors;
+    font-size: $fs;
+    font-weight: $fw;
+    font-family: $fm;
+}
+
+@mixin Border($bc, $bw) {
+    border: solid $bc $bw;
+}
+
+@mixin InputField {
+    display: block;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: $ItemBackground;
+    border-bottom: solid tomato 1px;
+    height: 40px;
+    margin-top: 10px;
+    @include Texts($RegularText, 16px,  100, $FamilyOne);
+    padding-left: 10px;
+}
+
+@mixin Button($bg, $colors) {
+    border: none;
+    background-color: $bg;
+    color: $colors;
+    outline: none;
+    padding: 10px 15px 10px 15px;
+    border-radius: 5px;
+}
+
+@mixin CommonSectionStyle {
+    @include FlexMixin(flex, row,  center, center);
+    .create_div{
+        width: 60%;
+    }
+    h1{
+        text-align: center;
+        @include Texts($RegularText, 50px, 400, $FamilyTwo);
+    }
+    .input_Forms{
+        @include Border(tomato, 2px);
+        padding: 30px 30px 20px 30px;
+        border-radius: 15px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        .input_field{
+           @include InputField()
+        }
+        .add_btn{
+            @include Button(tomato, black);
+            @include Texts(black, 16px, 400, $FamilyOne);
+            margin-top: 15px;
+            cursor: pointer;
+        }
+    }
+}

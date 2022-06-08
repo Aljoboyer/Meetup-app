@@ -1,0 +1,155 @@
+@import './Mixins';
+@import './Variables';
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+body {
+    background-color: $MainBG;
+}
+.dashboard_home{
+    @include FlexMixin(flex, row, space-between, flex-start);
+    .dashboard_sidebar{
+        width: 15%;
+        background-color: $ItemBackground;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        height: 100vh;
+        position: sticky;
+        top: 0px;
+        z-index: 1;
+        padding: 0px 20px 0px 20px;
+        border-right: inset 5px $Heading;
+    }
+    .side_route{
+        h1{
+            @include Texts($RegularText, 35px, 700, $FamilyTwo);
+            @include Border($RegularText, 1px);
+            text-align: center;
+            border-radius: 5px;
+        }
+        span{
+            @include Texts($RegularText, 45px, 700, $FamilyTwo)
+        }
+    }
+    .sidebar_text{
+        @include Texts($Heading, 18px, 400, $FamilyOne);
+        width: 60%; 
+        &:hover{
+            @include Border($Heading, 1px);
+            padding: 5px 0px 5px 20px;
+            transition: 0.5s ease-in-out;
+        }
+    }
+    .outlets{
+        width: 80%;
+    }
+}
+
+.create_section{
+   @include CommonSectionStyle()
+}
+.edit_section{
+    @include CommonSectionStyle()
+}
+.show_data_section{
+    @include FlexMixin(flex, column, flex-start, center);
+    h1{
+        text-align: center;
+        @include Texts($RegularText, 40px, 400, $FamilyTwo);
+    }
+    .filter_container{
+        @include FlexMixin(flex, row,  space-between, flex-start);
+        @include Border(tomato, 2px);
+        width: 70%;
+        padding: 20px 10px 20px 10px;
+        border-radius: 35px;
+        .filter_btn{
+            @include Border($Heading, 1px);
+            border-radius: 35px;
+            cursor: pointer;
+            @include Texts($Heading, 16px, 400, $FamilyOne);
+            padding: 8px ;
+        }
+        .dropdown{
+            text-align: center;
+            list-style-type: none;
+            position: relative;
+            display: inline-block;
+            a{
+                display: block;
+                text-decoration: none;
+            }
+        }
+        .link_div{
+            position: absolute;
+            z-index: 1;
+            background-color: $ItemBackground;
+            width: 100%;
+            border-radius: 15px;
+            p{
+                display: block;
+                text-decoration: none;
+                margin-top: 5px;
+                @include Texts($Heading, 14px, 400, $FamilyOne);
+                padding: 5px 0px 5px 0px;
+                border-radius: 10px;
+                &:hover{
+                    background-color: #83f1ff46;
+                }
+                cursor: pointer;
+            } 
+        }
+        .input_field{
+            border: none;
+            outline: none;
+            background-color: $ItemBackground;
+            color: $RegularText;
+            height: 40px;
+            border-radius: 5px;
+            padding-left: 10px;
+        }
+        .search_btn{
+            @include Button($Heading, black);
+            @include Texts(black, 14px, 400, $FamilyOne);
+            cursor: pointer;
+        }
+    }
+    .user_container{
+        padding-top: 30px;
+        @include FlexMixin(flex, row, space-around, flex-start, wrap);
+    }
+    .user_card{
+        width: 350px;
+        text-align: center;
+        padding: 15px 0px 15px 0px;
+        @include Border($Heading, 2px);
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        margin-bottom: 20px;
+        h4{
+            @include Texts($Heading, 22px, 700, $FamilyOne);
+        }
+        span{
+            @include Texts(tomato, 14px, 700, $FamilyOne);
+        }
+        p{
+            @include Texts($RegularText, 14px, 700, $FamilyOne);
+        }
+        .user_icons{
+            color: $RegularText;
+            
+        }
+        .edit_btn{
+            outline: none;
+            @include Button(tomato, black);
+            @include Border(tomato, 2px);
+            @include Texts($RegularText, 14px, 400, $FamilyOne);
+            cursor: pointer;
+        }
+        .Delete_btn{
+            @include Button(black, $Heading);
+            @include Texts($Heading, 14px, 400, $FamilyOne);
+            @include Border(black, 2px);
+            cursor: pointer;
+            margin-left: 5px;
+        }
+    }
+}
